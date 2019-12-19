@@ -1,7 +1,7 @@
 output "bucket_name" { 
     value = aws_s3_bucket.b.bucket
 } 
-output "sec_group" { 
+output "aws_security_group" { 
     value = aws_security_group.allow_tls.bucket_name
 } 
 output "aws_key_pair" { 
