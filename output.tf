@@ -13,3 +13,12 @@ output "username" {
 output "password" { 
     value = "password"
 } 
+output "wordpress" { 
+    value = aws_route53_record.www.name
+} 
+output "wordpress_username" { 
+    value = "some_username"
+} 
+output "wordpress_password" { 
+    value = "password"
+} 
