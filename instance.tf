@@ -8,7 +8,7 @@ resource "aws_instance" "web" {
   provisioner "remote-exec" {
     connection {
       host = self.public_ip
-      type = "tls"
+      type = "ssh"
       user = var.user
       private_key = file(var.ssh_key_location)
       }
