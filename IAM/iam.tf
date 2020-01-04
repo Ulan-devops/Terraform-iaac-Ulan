@@ -16,7 +16,7 @@ resource "aws_iam_group_membership" "developers_team" {
   group = aws_iam_group.developers.name
 }
 
-resource "aws_iam_policy" "admin_policy" {
+#resource "aws_iam_policy" "admin_policy" {
   name = "admin_policy_ulan" 
   path = "/" 
   description = "admin policy created by Ulan" 
