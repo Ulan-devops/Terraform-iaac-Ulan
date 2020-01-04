@@ -16,20 +16,38 @@ resource "aws_iam_group_membership" "developers_team" {
   group = aws_iam_group.developers.name
 }
 
-#resource "aws_iam_policy" "admin_policy" {
-  name = "admin_policy_ulan" 
-  path = "/" 
-  description = "admin policy created by Ulan" 
-  policy = <<EOF 
-{
-"Version": "2012-10-17", 
-"Statement": [ 
+resource "aws_iam_role" "test_role" { 
+
+name = "test_role" 
+
+assume_role_policy = <<EOF 
+
 { 
-"Effect": "Allow", 
-"Action": "*", 
-"Resource": "*" 
+
+  "Version": "2012-10-17", 
+
+  "Statement": [ 
+
+{ 
+
+  "Action": "sts:AssumeRole", 
+
+  "Principal": { 
+
+  "Service": "ec2.amazonaws.com" 
+
+}, 
+
+  "Effect": "Allow", 
+
+  "Sid": "" 
+
+    } 
+
+  ] 
+
 } 
-] 
-} 
+
 EOF 
+
 } 
