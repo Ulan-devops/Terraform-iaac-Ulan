@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "backend-state-ulan"
+    bucket = "terraform-us-ulan"
     key    = "aws/iam/iam_state"
     region = "us-west-1"
   }
