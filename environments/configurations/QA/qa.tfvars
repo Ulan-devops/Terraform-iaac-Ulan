@@ -9,4 +9,4 @@ s3_tfstate_file = "infrastructure.tfstate"       #Will be used to set backend.tf
 
 ami             = "ami-00068cd7555f543d5"
 instance_type   = "t2.medium"
-key_name        = "my-new-window-keygen"
+key_name        = "laptop"
