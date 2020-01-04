@@ -1,32 +1,39 @@
-resource "aws_instance" "web" {
-  count = var.count_instance
-  ami             = var.ami
-  instance_type   = var.instance_type
-  associate_public_ip_address = var.associate_public_ip_address
+resource "aws_instance" "web12" { 
+  count     = 1
+  ami           = var.ami
+  instance_type = var.instance_type 
+  
   key_name = aws_key_pair.deployer.key_name
-  security_groups = ["allow_tls"]
-  provisioner "remote-exec" {
-    connection {
+  user_data = file("userdata_file")
+  security_groups = var.sec_group 
+
+provisioner "remote-exec" {
+  connection {
       host = self.public_ip
-      type = "ssh"
-      user = var.user
+      type = "tls"
+      user = var.user_name
       private_key = file(var.ssh_key_location)
       }
-      inline = [
-        "sudo yum install -y epel-release",
-        "sudo yum install httpd -y ",
-        "sudo systemctl start httpd",
-        "sudo systemctl enable httpd"
-        ]
-      }
 
-  provisioner "local-exec" {
-    command = "echo ${aws_instance.web.public_ip} >> public_ips.txt"
+    inline = [
+      "sudo yum install httpd -y",      
+    ]
+}
+  tags = { 
+    Name = "HelloWorld$(count.index +1)"
   }
+
   lifecycle{
     prevent_destroy = false
-  }
-  tags = {
-    Name = "HelloWorld${count.index +1}"
-  }
+  } 
+ 
 }
+
+/* resource "aws_instace" "new_instace" {
+  ami           = "ami-0b2d8d1abb76a53d8" 
+  instance_type = "t2.micro" 
+  
+  key_name = aws_key_pair.deployer.key_name
+  security_groups = ["allow_tls"]
+}
+ */
