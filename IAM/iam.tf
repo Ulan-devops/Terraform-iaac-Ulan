@@ -17,9 +17,9 @@ resource "aws_iam_group_membership" "developers_team" {
 }
 
 resource "aws_iam_policy" "admin_policy" {
-  name = "admin_policy_talant" 
+  name = "admin_policy_ulan" 
   path = "/" 
-  description = "admin policy created by Talant" 
+  description = "admin policy created by Ulan" 
   policy = <<EOF 
 {
 "Version": "2012-10-17", 
