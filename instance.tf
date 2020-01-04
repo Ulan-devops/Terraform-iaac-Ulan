@@ -22,7 +22,7 @@ resource "aws_instance" "web" {
 
   provisioner "local-exec" {
     command = "echo ${aws_instance.web.public_ip} >> public_ips.txt",
-    command = wget -O /tmp  https://wordpress.org/latest.tar.gz,
+    command = "wget -O /tmp  https://wordpress.org/latest.tar.gz",
     command  = "mkdir /tmp/test"
   }
   lifecycle{
