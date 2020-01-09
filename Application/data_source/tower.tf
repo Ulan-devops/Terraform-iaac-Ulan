@@ -1,7 +1,5 @@
 # Go to us-east-2 instances. Wt create with the latest  ami from scratch a new instance called Hello World
-provider "aws" {
-    region = "us-east-1"
-    }
+
 # search for Ubuntu latest with the owner
 data "aws_ami" "centos" {
     filter {
@@ -17,7 +15,7 @@ data "aws_ami" "centos" {
 }
 
 # Show the latest ami id
-output "ami" {
+output "centos" {
     value = data.aws_ami.centos.id
 }
 
