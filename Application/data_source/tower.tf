@@ -23,33 +23,31 @@ output "ami" {
 
 resource "aws_key_pair" "towerkey" { 
   key_name   = "towerkey" 
-  public_key = file("~/.ssh/id_rsa.pub") 
+  public_key = file("~/.ssh/id_rsa.pub")
 } 
 
 
 # so data source collects us a new ami
 
 resource "aws_instance" "tower" {
-  ami           = data.aws_ami.centos.id
-  instance_type = "t2.micro"
-  key_name      = aws_key_pair.towerkey.key_name
-  provisioner "remote-exec" {
-    connection {
-      host = self.public_ip
-      type = "ssh"
-      user = "centos" 
-      private_key = file("~/.ssh/id_rsa")
-      }
-    inline = [
-      "sudo yum install -y epel-release", 
-    ] 
-  }
-  tags = {
+    ami           = data.aws_ami.centos.id
+    instance_type = "t2.micro"
+    key_name      = aws_key_pair.towerkey.key_name
+    provisioner "remote-exec" {
+        connection {
+            host = self.public_ip
+            type = "ssh"
+            user = "centos"
+            private_key = file("~/.ssh/id_rsa")
+            }
+            inline = [
+                "sudo yum install -y epel-release",
+                ]
+                }
+                tags = {
     Name = "HelloWorld"
-  }
-}
-
-
+    }
+    }
 # here we added a new route53 record and hosted zone id from your route53
 
 resource "aws_route53_record" "tower" { 
