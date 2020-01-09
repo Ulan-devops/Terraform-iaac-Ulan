@@ -14,15 +14,19 @@ data "aws_ami" "centos" {
         }
     most_recent = true
     owners = ["679593333241"]
-    }
+}
+
 # Show the latest ami id
 output "ami" {
     value = data.aws_ami.centos.id
-    }
+}
+
+
 resource "aws_key_pair" "towerkey" {
     key_name   = "towerkey"
     public_key = file("~/.ssh/id_rsa.pub")
-    }
+}
+
 
 # so data source collects us a new ami
 
@@ -37,11 +41,11 @@ resource "aws_instance" "tower" {
             user = "centos"
             private_key = file("~/.ssh/id_rsa")
             }
-            inline = [
+          inline = [
                 "sudo yum install -y epel-release",
                 ]
                 }
-    tags = {
+            tags = {
         Name = "HelloWorld"
         }
         }
@@ -52,5 +56,5 @@ resource "aws_route53_record" "tower" {
     name    = "tower.example.com"
     type    = "A"
     ttl     = "300"
-    records = [aws_instance.web.public_ip]
+    records = [aws_instance.tower.public_ip]
     }
