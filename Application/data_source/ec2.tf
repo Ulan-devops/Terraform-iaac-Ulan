@@ -1,4 +1,4 @@
-# Go to us-east-2 instances
+# Go to us-east-2 instances. Wt create with the latest  ami from scratch a new instance called Hello World
 provider "aws" {
     region = "us-east-2" 
 } 
