@@ -1,7 +1,7 @@
 terraform {
    backend "s3" {
-    bucket = "acirrustech-iaac"
+    bucket = "eksnew"
     region = "us-east-1"
-    key    = "farrukh/infra"
+    key    = "ulans"
   }
 }
