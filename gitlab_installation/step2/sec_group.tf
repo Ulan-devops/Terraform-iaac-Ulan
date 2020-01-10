@@ -1,6 +1,6 @@
-resource "aws_security_group" "allow_ssh_and_gitlab" {
-  name        = "allow_ssh_and_gitlab"
-  description = "Allow SSH and gitlab"
+resource "aws_security_group" "gitlab" {
+  name        = "gitlab"
+  description = "gitlab"
   vpc_id      = "${var.vpc_id}"
 
   ingress {
