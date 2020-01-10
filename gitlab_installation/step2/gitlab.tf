@@ -7,7 +7,7 @@ resource "aws_instance" "gitlab" {
   ami                         = "${var.ami}"
   key_name                    = "${var.key_name}"
   associate_public_ip_address = "true"
-  security_groups             = ["allow_ssh_and_gitlab"]
+  security_groups             = ["gitlab"]
 
   provisioner "remote-exec" {
     connection {
