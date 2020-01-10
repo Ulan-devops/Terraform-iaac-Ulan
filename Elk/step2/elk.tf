@@ -1,7 +1,6 @@
 provider "aws" {
   region = "${var.region}"
-}
-
+}}
 resource "aws_instance" "elk" {
   instance_type               = "${var.instance_type}"
   ami                         = "${var.ami}"
