@@ -14,3 +14,12 @@ resource "azurerm_virtual_network" "vnet1" {
   resource_group_name = "${azurerm_resource_group.web_server_rg.name}" 
   address_space = ["10.0.0.0/16"] 
 } 
+
+
+## it will create a subnet private
+resource "azurerm_subnet" "private" { 
+  name = "private" 
+  resource_group_name = "${azurerm_resource_group.web_server_rg.name}" 
+  virtual_network_name = "${azurerm_virtual_network.vnet1.name}" 
+  address_prefix = "10.0.1.0/24" 
+} 
