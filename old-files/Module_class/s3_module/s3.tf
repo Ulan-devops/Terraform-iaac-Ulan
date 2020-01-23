@@ -7,5 +7,5 @@ provider "aws"{
  
 module "bucket1" { 
   source = "./modules" 
-  bucketname = "some-made-up-bucket-ulan-devops" 
+  bucketname = "ulan-devops" 
 } 
